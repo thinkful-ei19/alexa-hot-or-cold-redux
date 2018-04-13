@@ -7,17 +7,12 @@ import './index.css';
 import Game from './components/game';
 
 import store from './store';
-import { addGuess, addFeedback } from './actions/index';
+import { tryGuess, resetGame } from './actions/index';
 
-//displatch
-store.dispatch(addGuess(10));
-store.dispatch(addGuess(12));
-store.dispatch(addGuess(112));
-
-store.dispatch(addFeedback('Hot'));
+store.dispatch(tryGuess(13, 'Hot'));
 console.log(store.getState());
-store.dispatch(addGuess(100));
 
+store.dispatch(resetGame());
 console.log(store.getState());
 
 ReactDOM.render(
