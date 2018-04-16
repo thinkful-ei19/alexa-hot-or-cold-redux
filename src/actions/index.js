@@ -14,9 +14,6 @@ export const resetGame = (correctAnswer) => ({
 });
 
 
-
-
-
 // export const ADD_AURAL = 'ADD_AURAL';
 // export const addAural = auralStatus => ({
 //     type: ADD_AURAL,

@@ -11,6 +11,11 @@ export const guessReducer = (state=initialState, action) => {
     if (action.type === TRY_GUESS) {
       let feedback;
 
+    // const duplicateGuess = state.guesses.filter((guess) => guess === action.guess);
+    // if(duplicateGuess) {
+    //     console.log('!!!!');
+    // }
+
     const difference = Math.abs(action.guess - state.correctAnswer);
 
     if (difference >= 50) {
