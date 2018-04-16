@@ -1,8 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import './top-nav.css';
+import { resetGame } from '../actions';
 
-export default function TopNav(props) {
+//smart -- needs to be connected bc from here we Restart --> dispatch restartGame fxn
+export function TopNav(props) {
   return (
     <nav>
       <ul className="clearfix">
@@ -20,7 +23,7 @@ export default function TopNav(props) {
             href="#feedback"
             className="new"
             aria-label="Start a new game"
-            onClick={() => props.onRestartGame()}
+            onClick={() => props.dispatch(resetGame(Math.round(Math.random() * 100) + 1))}
           >
             + New Game
           </a>
@@ -40,3 +43,5 @@ export default function TopNav(props) {
     </nav>
   );
 }
+//not accessing state so no --> mapTo..
+export default connect()(TopNav)
