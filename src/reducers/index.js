@@ -7,39 +7,39 @@ const initialState = {
     correctAnswer: Math.round(Math.random() * 100) + 1
 };
 
-// //check to see if guess is correct -- add logic
 export const guessReducer = (state=initialState, action) => {
     if (action.type === TRY_GUESS) {
-        return Object.assign({}, {
-            ...state,
-            guesses: [...state.guesses, action.guess],
-            feedback: action.feedback
-        })
+      let feedback;
+
+    const difference = Math.abs(action.guess - state.correctAnswer);
+
+    if (difference >= 50) {
+        feedback = "You're Ice Cold...";
+    } else if (difference >= 30) {
+        feedback = "You're Cold...";
+    } else if (difference >= 10) {
+        feedback = "You're Warm.";
+    } else if (difference >= 1) {
+        feedback = "You're Hot!";
+    } else {
+        feedback = 'You got it!';
     }
+
+        return Object.assign({}, state, {
+            feedback,
+            guesses: [...state.guesses, action.guess],
+        });
+    }
+
     if (action.type === RESET_GAME) {
-        return Object.assign({}, {
+        return Object.assign({}, state, {
             guesses: [],
             feedback: 'Make your guess',
             auralStatus: '',
-            correctAnswer: Math.round(Math.random() * 100) + 1
+            correctAnswer: action.correctAnswer
         });
     }
     return state
 }
 
 
-
-// export const guessReducer = (state=initialState, action) => {
-//     if (action.type === ADD_GUESS) {
-//         return {
-//             ...state,
-//             guesses: [...state.guesses, action.guess]
-//         }
-//     }
-//     if (action.type === ADD_FEEDBACK) {
-//         return {
-//             ...state,
-//             feedback: action.feedback
-//         }
-//     }
-// }

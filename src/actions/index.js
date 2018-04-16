@@ -2,15 +2,15 @@
 //restart game action -- reset to empty []
 
 export const TRY_GUESS = 'TRY_GUESS';
-export const tryGuess = (guess, feedback) => ({
+export const tryGuess = (guess) => ({
     type: TRY_GUESS,
-    guess,
-    feedback
+    guess
 });
 
 export const RESET_GAME = 'RESET_GAME';
-export const resetGame = () => ({
+export const resetGame = (correctAnswer) => ({
     type: RESET_GAME,
+    correctAnswer
 });
 
 
